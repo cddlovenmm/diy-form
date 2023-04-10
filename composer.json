@@ -1,0 +1,34 @@
+{
+    "name": "million-gao/diy-form",
+    "alias": "自定义表单模块",
+    "description": "包括自定义表单以及查看表单数据...",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension", "diy-form"],
+    "homepage": "https://github.com/million-gao/diy-form",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "million gao",
+            "email": "milliongds@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "dcat/laravel-admin": "~2.0",
+        "slowlyo/dcat-diy-form": "^2.2",
+        "maatwebsite/excel": "^3.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "MillionGao\\DiyForm\\": "src/"
+        }
+    },
+    "extra": {
+        "dcat-admin": "MillionGao\\DiyForm\\DiyFormServiceProvider",
+        "laravel": {
+            "providers": [
+                "MillionGao\\DiyForm\\DiyFormServiceProvider"
+            ]
+        }
+    }
+}
