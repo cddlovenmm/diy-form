@@ -1,7 +1,7 @@
 <?php
 namespace MillionGao\DiyForm\Renderable;
 
-use MillionGao\DiyForm\Http\Repositories\DiyFormOtherInfo as AppFormOtherInfo;
+use MillionGao\DiyForm\Repositories\DiyFormOtherInfo as AppFormOtherInfo;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Grid\LazyRenderable;
 
@@ -17,7 +17,7 @@ class DiyFormOtherTable extends LazyRenderable
 
             if (request('is_have_admin')) {
                 $grid->column('admin_name', '负责人名称');
-                $grid->column('admin_avater', '头像')->image(env_new('IMG_URL'), 100, 100);
+                $grid->column('admin_avater', '头像')->image(config('diy-form.img_url'), 100, 100);
                 $grid->column('admin_job', '职位');
                 $grid->column('admin_message', '描述');
             }

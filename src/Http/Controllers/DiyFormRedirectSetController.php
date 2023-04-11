@@ -1,10 +1,10 @@
 <?php
 namespace MillionGao\DiyForm\Http\Controllers;
 
-use App\Admin\Repositories\DiyForm\DiyFormRedirectUri;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
+use MillionGao\DiyForm\Repositories\DiyFormRedirectUri;
 
 class DiyFormRedirectSetController extends AdminController
 {

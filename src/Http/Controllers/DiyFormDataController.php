@@ -2,12 +2,13 @@
 
 namespace MillionGao\DiyForm\Http\Controllers;
 
-use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use MillionGao\DiyForm\Models\DiyForm;
+use MillionGao\DiyForm\Models\DiyFormData;
 use MillionGao\DiyForm\Models\DiyFormDataCount;
 use MillionGao\DiyForm\Models\DiyFormInfo;
+use MillionGao\DiyForm\Pages\DiyFormDataPage;
 
 class DiyFormDataController extends AdminController
 {
@@ -30,7 +31,7 @@ class DiyFormDataController extends AdminController
             $grid->column('updated_at', '最后一次留资时间');
 
             $grid->actions(function (Grid\Displayers\Actions $actions) {
-                $actions->append('<a href="/admin/diy-form/data/info/'.$this->form_id.'" target=""><i class="fa fa-eye"> 详细数据</i></a>');
+                $actions->append('<a href="/admin/diy-forms/data/info/'.$this->form_id.'" target=""><i class="fa fa-eye"> 详细数据</i></a>');
             });
 
             $grid->quickSearch('channel');
@@ -48,9 +49,9 @@ class DiyFormDataController extends AdminController
     {
         $per_page = $request->get('per_page', 20);
         //获取数据
-        $formData = FormData::query()->where('form_id', $id)->orderBy('id', 'desc')->paginate($per_page)->toArray();
+        $formData = DiyFormData::query()->where('form_id', $id)->orderBy('id', 'desc')->paginate($per_page)->toArray();
         //获取表单详情
-        $formInfo = FormInfo::query()->where('id', $id)->first();
+        $formInfo = DiyFormInfo::query()->where('id', $id)->first();
         $formId = $formInfo->form_id;
         if (array_get($formData, 'data', [])) {
             foreach ($formData['data'] as & $value) {
@@ -75,8 +76,8 @@ class DiyFormDataController extends AdminController
         }
 
         //获取表头
-        $formInfo = FormInfo::getById($id);
-        $form = Form::getById($formInfo['form_id']);
+        $formInfo = DiyFormInfo::getById($id);
+        $form = DiyForm::getById($formInfo['form_id']);
         if ($form['is_solid']) {
             $field_data = array_get(DiyForm::column_by_id(), $form['id']);
         } else {
@@ -87,6 +88,6 @@ class DiyFormDataController extends AdminController
 
         return $content
             ->title('表单数据详情')
-            ->body(new FormDataPage($id, $formData, $field_data));
+            ->body(new DiyFormDataPage($id, $formData, $field_data));
     }
 }

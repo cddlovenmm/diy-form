@@ -4,7 +4,7 @@
     "description": "包括自定义表单以及查看表单数据...",
     "type": "library",
     "keywords": ["dcat-admin", "extension", "diy-form"],
-    "homepage": "https://github.com/million-gao/diy-form",
+    "homepage": "https://github.com/MillionGao/diy-form.git",
     "license": "MIT",
     "authors": [
         {

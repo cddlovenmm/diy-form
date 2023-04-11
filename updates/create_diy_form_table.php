@@ -19,7 +19,7 @@ class CreateDiyFormTable extends Migration
             $table->tinyInteger('is_solid')->default(0)->nullable(false)->comment('是否固定模板 0否 1是');
             $table->tinyInteger('is_have_admin')->default(0)->nullable(false)->comment('是否包含管理员信息 0否 1是');
             $table->string('prefix_uri')->default('')->nullable(false)->comment('固定模板表单前缀');
-            $table->text('field_data')->default('')->nullable(false)->comment('表单字段');
+            $table->text('field_data')->comment('表单字段');
             $table->timestamps();
             $table->softDeletes();
         });

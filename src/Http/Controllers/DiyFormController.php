@@ -4,6 +4,7 @@ namespace MillionGao\DiyForm\Http\Controllers;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
+use MillionGao\DiyForm\Renderable\DiyFormOtherTable;
 use MillionGao\DiyForm\Repositories\DiyForm;
 
 class DiyFormController extends AdminController
@@ -16,11 +17,7 @@ class DiyFormController extends AdminController
 
             $grid->column('name', '表单名称');
             $grid->column('info', '表单详情')->display('点击查看链接')->modal('表单详情', function () {
-                if ($this->is_solid) {
-                    return FormOtherTable::make()->payload(['prefix_uri'=>$this->prefix_uri, 'id'=>$this->getKey()]);
-                } else {
-                    return FormTable::make()->payload(['is_solid'=>$this->is_solid, 'id'=>$this->getKey()]);
-                }
+                return FormTable::make()->payload(['is_solid'=>$this->is_solid, 'id'=>$this->getKey()]);
             });
             $grid->column('is_solid', '模板类型')->display(function ($value) {
                 return $value ? '固定模板' : '自定义模板';

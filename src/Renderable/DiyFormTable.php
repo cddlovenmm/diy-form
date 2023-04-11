@@ -12,9 +12,9 @@ class FormTable extends LazyRenderable
         return Grid::make(new AppFormInfo(), function (Grid $grid) {
             $grid->column('channel', '渠道');
             $grid->column('url', '表单链接')->display(function () {
-                return 'https://y.gkgoo.cn/index?channel='.$this->id;
+                return config('diy-form.diy.prefix_uri').$this->id;
             })->link();
-            $grid->column('images', '背景图')->image(env_new('IMG_URL'), 100, 100);
+            $grid->column('images', '背景图')->image(config('diy-form.img_url'), 100, 100);
 
             $grid->disableActions();
             $grid->disableRowSelector(); 
