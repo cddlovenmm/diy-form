@@ -28,7 +28,7 @@ class DiyFormServiceProvider extends ServiceProvider
 		[
 			'parent' => '自定义表单', // 指定父级菜单
 			'title'  => '自定义模板配置',
-			'uri'    => 'diy-form/index',
+			'uri'    => 'diy-forms/index',
 			'icon'   => 'fa-align-justify',
 		],
 		[
