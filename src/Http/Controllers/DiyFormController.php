@@ -6,6 +6,8 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use MillionGao\DiyForm\Renderable\DiyFormOtherTable;
 use MillionGao\DiyForm\Repositories\DiyForm;
+use App\Admin\Renderable\FormTable;
+
 
 class DiyFormController extends AdminController
 {
